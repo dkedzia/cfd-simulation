@@ -7,6 +7,7 @@ from textual.widgets import Static
 from i18n import t
 from tui.navigation import NavAction, nav_line
 from tui.screens.base import BaseScreen
+from tui.screens.market_data.list import MarketDataListScreen
 from tui.screens.placeholder import PlaceholderScreen
 from tui.screens.settings import SettingsScreen
 from tui.widgets import KeyHint
@@ -24,6 +25,7 @@ class MainMenuScreen(BaseScreen):
         yield nav_line(t("menu.hint_select"))
         yield NavAction(t("menu.simulations"), "simulations", id="menu_simulations")
         yield NavAction(t("menu.strategies"), "strategies", id="menu_strategies")
+        yield NavAction(t("menu.market_data"), "market_data", id="menu_market_data")
         yield NavAction(t("menu.settings"), "settings", id="menu_settings")
         yield NavAction(t("menu.exit"), "exit", id="menu_exit")
 
@@ -44,6 +46,9 @@ class MainMenuScreen(BaseScreen):
 
     def handle_nav_strategies(self) -> None:
         self.app.push_screen(PlaceholderScreen("screen.strategies"))
+
+    def handle_nav_market_data(self) -> None:
+        self.app.push_screen(MarketDataListScreen())
 
     def handle_nav_settings(self) -> None:
         self.app.push_screen(SettingsScreen())

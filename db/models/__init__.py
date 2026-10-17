@@ -1,3 +1,3 @@
-from db.models.ping import Ping
+from db.models.ticker import Ticker
 
-__all__ = ["Ping"]
+__all__ = ["Ticker"]
