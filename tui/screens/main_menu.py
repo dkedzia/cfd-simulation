@@ -9,6 +9,7 @@ from tui.navigation import NavAction, nav_line
 from tui.screens.base import BaseScreen
 from tui.screens.market_data.list import MarketDataListScreen
 from tui.screens.placeholder import PlaceholderScreen
+from tui.screens.strategies.list import StrategyListScreen
 from tui.screens.settings import SettingsScreen
 from tui.widgets import KeyHint
 
@@ -45,7 +46,7 @@ class MainMenuScreen(BaseScreen):
         self.app.push_screen(PlaceholderScreen("screen.simulations"))
 
     def handle_nav_strategies(self) -> None:
-        self.app.push_screen(PlaceholderScreen("screen.strategies"))
+        self.app.push_screen(StrategyListScreen())
 
     def handle_nav_market_data(self) -> None:
         self.app.push_screen(MarketDataListScreen())

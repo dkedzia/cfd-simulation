@@ -16,10 +16,17 @@ class TextPromptScreen(ModalScreen[str | None]):
         Binding("escape", "cancel", "Cancel", show=False),
     ]
 
-    def __init__(self, title: str, initial: str = "") -> None:
+    def __init__(
+        self,
+        title: str,
+        initial: str = "",
+        *,
+        select_all: bool = False,
+    ) -> None:
         super().__init__()
         self._title = title
         self._initial = initial
+        self._select_all = select_all
 
     def compose(self) -> ComposeResult:
         with Vertical():
@@ -27,7 +34,11 @@ class TextPromptScreen(ModalScreen[str | None]):
             yield Input(value=self._initial, id="prompt_input")
 
     def on_mount(self) -> None:
-        self.query_one("#prompt_input", Input).focus()
+        field = self.query_one("#prompt_input", Input)
+        field.focus()
+        if self._select_all and self._initial:
+            field.cursor_position = len(self._initial)
+            field.selection = (0, len(self._initial))
 
     def on_input_submitted(self, event: Input.Submitted) -> None:
         if event.input.id == "prompt_input":
