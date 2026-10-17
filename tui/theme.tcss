@@ -1,0 +1,53 @@
+Screen {
+    background: #000000;
+    color: #c0c0c0;
+}
+
+HeaderBar {
+    dock: top;
+    height: 1;
+    background: #1c1c1c;
+    color: #c0c0c0;
+    padding: 0 1;
+}
+
+FooterBar {
+    dock: bottom;
+    height: auto;
+    max-height: 4;
+    background: #1c1c1c;
+    color: #808080;
+    padding: 0 1;
+}
+
+#body {
+    height: 1fr;
+    padding: 0 1;
+}
+
+NavScroll {
+    height: 1fr;
+    scrollbar-size: 0 0;
+}
+
+.nav-item {
+    height: auto;
+    padding: 0 1;
+}
+
+Static.title {
+    text-style: bold;
+    color: #ffffff;
+    padding: 1 0;
+}
+
+ContextMenu {
+    height: auto;
+    width: auto;
+    min-width: 24;
+    max-width: 100%;
+    background: #1c1c1c;
+    border: solid #808080;
+    padding: 0 1;
+    margin: 0 0 0 2;
+}

@@ -1,0 +1,28 @@
+---
+description: Keep all user-visible text translated across five locales
+alwaysApply: true
+---
+
+# Internationalization (i18n)
+
+Supported locales: **en**, **es**, **fr**, **pl**, **zh** in `i18n/locales/`.
+
+## Rules
+
+- Any **new or changed user-visible string** (menu labels, hints, titles, user-facing errors, button text) must use `t("dotted.english.key")` from `i18n`, not a literal in UI code.
+- Add or update the same key in **all five** locale JSON files in the **same change**.
+- Keys are English, lower case, dot-separated (e.g. `menu.settings`, `hint.back`).
+- Logger messages and developer comments stay in English; only UI strings are translated.
+- Native language names in the locale picker (`locale.en`, `locale.es`, …) stay in their native form in every file.
+
+## Examples
+
+```python
+# BAD — hardcoded label, missing catalog entries
+yield NavAction("Settings", "settings", id="menu_settings")
+
+# GOOD
+yield NavAction(t("menu.settings"), "settings", id="menu_settings")
+```
+
+When adding `menu.settings`, update `i18n/locales/en.json`, `es.json`, `fr.json`, `pl.json`, and `zh.json` together.
